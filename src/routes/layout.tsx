@@ -1,4 +1,4 @@
-import { component$ } from "@builder.io/qwik";
+import { component$, Slot } from "@builder.io/qwik";
 import type { RequestHandler } from "@builder.io/qwik-city";
 // import { useAuthSession, useAuthSignin, useAuthSignout } from "./plugin@auth";
 
@@ -14,7 +14,7 @@ export const onGet: RequestHandler = async ({ cacheControl }) => {
 };
 
 export default component$(() => {
-  return <h1>PRova</h1>
+  return <Slot />
 })
 // export default component$(() => {
   // const session = useAuthSession();
