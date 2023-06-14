@@ -60,6 +60,11 @@ corrisponde direttamente ad un file preciso
 
 C'e' la possibilita di integrare delle pagine costruite su builder.io e
 visualizzarle direttamente dentro l'applicazione
+C'e' la possibilita di integrare dei componenti React
+
+
+
+
 
 
 
