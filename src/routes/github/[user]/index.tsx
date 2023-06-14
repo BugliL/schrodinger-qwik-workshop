@@ -1,4 +1,4 @@
-import { component$, useComputed$, useSignal, useStylesScoped$ } from "@builder.io/qwik";
+import { component$, useSignal, useStylesScoped$ } from "@builder.io/qwik";
 import { routeLoader$, useLocation } from "@builder.io/qwik-city";
 import type { paths } from "@octokit/openapi-types";
 import CSS from "./index.css?inline";
@@ -35,20 +35,15 @@ export const useRepositories = routeLoader$(async ({ params, env }) => {
 export default component$(() => {
   useStylesScoped$(CSS);
   const location = useLocation();
-  const repos = useRepositories();
+  const repos = mockUseRepositories();
   const filter = useSignal('');
-  // const computedRepos = useComputed$(() =>{
-  //   repos.value.filter(
-  //     (value) => value.full_name.includes('Flask') )
-  // });
 
   return <div>
     <div>user:<code>{location.params.user}</code></div>
     <div>count: {repos.value.length}</div>
-    <input type='text' bind:value={filter}/>
     <h2>Filtro : {filter.value}</h2>
     <ul class="card-list">
-      {repos.value.map((repo) => (<li class="card-item" key={repo.id}>{repo.full_name}</li>))}
+      {repos.value.map((repo) => (<li class="card-item" >{repo.full_name}</li>))}
     </ul>
   </div>;
 });

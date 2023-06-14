@@ -1,12 +1,6 @@
-// export default component$(() => {
-//   return <Slot />;
-// });
-//
-import { component$, Slot, useStylesScoped$ } from "@builder.io/qwik";
+import { component$ } from "@builder.io/qwik";
 import type { RequestHandler } from "@builder.io/qwik-city";
-import { Form, useLocation } from "@builder.io/qwik-city";
-import { useAuthSession, useAuthSignin, useAuthSignout } from "./plugin@auth";
-import CSS from "./layout.css?inline";
+// import { useAuthSession, useAuthSignin, useAuthSignout } from "./plugin@auth";
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
   // Control caching for this request for best performance and to reduce hosting costs:
@@ -20,42 +14,44 @@ export const onGet: RequestHandler = async ({ cacheControl }) => {
 };
 
 export default component$(() => {
-  useStylesScoped$(CSS);
-  const session = useAuthSession();
-  const authSignin = useAuthSignin();
-  const authSignout = useAuthSignout();
-  const location = useLocation();
-  const user = session.value?.user;
-  return (
-    <>
-      <header>
-        <div>
-          {user ? (
-            <div>
-              <Form action={authSignout}>
-                {user.image && (
-                  <img src={user.image} width={30} height={30} />
-                )}
-                <span>
-                  {user.name}({user.email})
-                </span>
-                <button>Sign Out</button>
-              </Form>
-            </div>
-          ) : (
-            <Form action={authSignin}>
-              <input type="hidden" name="providerId" value="github" />
-              <input
-                type="hidden"
-                name="options.callbackUrl"
-                value={location.url.toString()}
-              />
-              <button>Sign In</button>
-            </Form>
-          )}
-        </div>
-      </header>
-      <Slot />
-    </>
-  );
-});
+  return <h1>PRova</h1>
+})
+// export default component$(() => {
+  // const session = useAuthSession();
+  // const authSignin = useAuthSignin();
+  // const authSignout = useAuthSignout();
+  // const location = useLocation();
+  // const user = session.value?.user;
+  // return (
+  //   <>
+  //     <header>
+  //       <div>
+  //         {user ? (
+  //           <div>
+  //             <Form action={authSignout}>
+  //               {user.image && (
+  //                 <img src={user.image} width={30} height={30} />
+  //               )}
+  //               <span>
+  //                 {user.name}({user.email})
+  //               </span>
+  //               <button>Sign Out</button>
+  //             </Form>
+  //           </div>
+  //         ) : (
+  //           <Form action={authSignin}>
+  //             <input type="hidden" name="providerId" value="github" />
+  //             <input
+  //               type="hidden"
+  //               name="options.callbackUrl"
+  //               value={location.url.toString()}
+  //             />
+  //             <button>Sign In</button>
+  //           </Form>
+  //         )}
+  //       </div>
+  //     </header>
+  //     <Slot />
+  //   </>
+  // );
+// });
